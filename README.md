@@ -109,6 +109,49 @@ Ce fichier gère les routes de l'application. Il définit les chemins vers les d
 ## Conclusion
 Ce projet Flutter est structuré de manière à séparer les différentes fonctionnalités en dossiers et fichiers spécifiques, ce qui facilite la gestion et la maintenance du code. Chaque partie de l'application a une responsabilité bien définie, ce qui permet une meilleure organisation et une évolutivité accrue.
 
+# Guide d'Installation et de Configuration de Postman pour Sellsy API
+
+## Installation de Postman
+
+1. Téléchargez et installez la version desktop de Postman en suivant ce [lien](https://www.postman.com/downloads/).
+
+## Création d'une Nouvelle Requête
+
+1. Ouvrez Postman et créez une nouvelle requête.
+2. Choisissez la méthode **POST**.
+3. Comme URL pour la requête, entrez : `https://apifeed.sellsy.com/0/`.
+
+## Configuration de l'Authorization
+
+1. Allez dans l'onglet **Authorization**.
+2. Choisissez le **Auth Type** : `Oauth 1.0`.
+3. Réglez le **signature method** sur `plaintext`.
+4. Remplissez les champs **Consumer Key**, **Consumer Secret**, **Access Token** et **Token Secret** avec les tokens générés sur Sellsy à partir d'un compte disposant des droits nécessaires.
+
+## Configuration du Body
+
+1. Allez dans l'onglet **Body**.
+2. Cochez la case **none**.
+
+## Configuration des Scripts
+
+1. Pour l'onglet **Pre-request Script** ou **Tests**, vous pouvez vous référer à la documentation de Sellsy pour récupérer les données en fonction de votre cas d'utilisation : [Documentation des méthodes Sellsy](https://api.sellsy.fr/documentation/methodes).
+2. Par exemple, pour récupérer la liste des clients, vous pouvez utiliser le script suivant :
+
+```javascript
+let json = {
+    method: "Client.getList",
+    params: {}
+};
+
+pm.request.body.formdata.add({
+    key: "do_in",
+    value: JSON.stringify(json),
+    type: "text"
+});
+
+
+
 
 
 
